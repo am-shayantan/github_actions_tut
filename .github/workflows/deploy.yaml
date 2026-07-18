@@ -22,5 +22,5 @@ jobs:
           script: |
             cd /home/ec2-user/github_actions_tut
             git pull origin main
-            export PORT={{ secrets.PORT }}
+            export PORT=${{ secrets.PORT }}
             docker compose up -d --build
