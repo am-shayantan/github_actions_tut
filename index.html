@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✦ beautiful hello world ✦</title>
+  <!-- Font & smooth reset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,600;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b0d15;
+      font-family: 'Inter', sans-serif;
+      padding: 1.5rem;
+      /* animated gradient background */
+      background: radial-gradient(circle at 20% 30%, #1a1e2f, #0b0d15 80%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* floating orbs – pure beauty */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.5;
+      z-index: 0;
+      animation: floatOrb 18s infinite alternate ease-in-out;
+    }
+
+    body::before {
+      width: 50vw;
+      height: 50vw;
+      background: #7b5eff;
+      top: -15%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+
+    body::after {
+      width: 40vw;
+      height: 40vw;
+      background: #ff5e9e;
+      bottom: -10%;
+      right: -10%;
+      animation-delay: -6s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -30px) scale(1.2); }
+    }
+
+    /* main card – glassmorphism + glow */
+    .hello-card {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      width: 100%;
+      padding: 3.5rem 3rem;
+      background: rgba(18, 22, 40, 0.45);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 3.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.06);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      animation: cardEntry 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hello-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 40px 90px rgba(90, 50, 255, 0.25);
+    }
+
+    @keyframes cardEntry {
+      0% { opacity: 0; transform: scale(0.94) translateY(30px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* decorative line glow */
+    .glow-line {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #a07eff, #ff7eb3, #a07eff);
+      background-size: 200% auto;
+      margin: 0.6rem auto 1.8rem auto;
+      border-radius: 10px;
+      animation: shimmerLine 4s linear infinite;
+      filter: drop-shadow(0 0 8px #a07eff88);
+    }
+
+    @keyframes shimmerLine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* main heading – expressive & modern */
+    .hello-title {
+      font-size: clamp(3.8rem, 15vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #f6f3ff 0%, #c7baff 45%, #ffb3d1 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(160, 126, 255, 0.3);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* subtle glow behind text */
+    .hello-title::after {
+      content: 'hello world';
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, #7b5eff55, #ff5e9e55);
+      filter: blur(24px);
+      opacity: 0.4;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .sub-message {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: rgba(230, 225, 255, 0.7);
+      letter-spacing: 0.3px;
+      margin-top: -0.2rem;
+      margin-bottom: 2.2rem;
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .sub-message span {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.2rem 1rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #b8aeff;
+    }
+
+    .divider-star {
+      color: #ff7eb3;
+      opacity: 0.5;
+      font-weight: 200;
+    }
+
+    /* interactive button – elegant */
+    .btn-glow {
+      display: inline-block;
+      margin-top: 1.8rem;
+      padding: 0.9rem 2.8rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 80px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      color: #ddd6ff;
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 20px rgba(100, 70, 255, 0.05);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, rgba(50, 40, 80, 0.3), rgba(20, 15, 40, 0.4));
+      border-bottom: 2px solid rgba(160, 126, 255, 0.2);
+    }
+
+    .btn-glow:hover {
+      background: rgba(160, 126, 255, 0.15);
+      border-color: #a07eff;
+      color: #ffffff;
+      box-shadow: 0 0 40px #7b5eff55, 0 0 80px #7b5eff22;
+      transform: scale(1.02);
+    }
+
+    .btn-glow:active {
+      transform: scale(0.97);
+    }
+
+    /* small detail – pulse dot */
+    .pulse-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #6affb0;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 20px #6affb0aa;
+      animation: pulse 2s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.5; transform: scale(0.9); }
+    }
+
+    /* footer / extra charm */
+    .credit {
+      margin-top: 2.8rem;
+      font-size: 0.8rem;
+      color: rgba(180, 170, 220, 0.3);
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .credit span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .credit i {
+      font-style: normal;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.1rem 0.6rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    /* responsive tweaks */
+    @media (max-width: 500px) {
+      .hello-card {
+        padding: 2.2rem 1.5rem;
+        border-radius: 2.5rem;
+      }
+      .sub-message {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .btn-glow {
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* extra – random floating shapes (tiny) */
+    .glitch-star {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.02);
+      font-size: 2rem;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* custom cursor glow (optional) */
+    .hello-card {
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <!-- main card -->
+  <div class="hello-card" role="main" aria-label="Hello world welcome card">
+    
+    <!-- tiny sparkle icon (inline svg) -->
+    <div style="display: flex; justify-content: center; margin-bottom: 0.8rem; opacity: 0.6;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z" fill="#c7baff" fill-opacity="0.7" />
+        <path d="M12 6L12.8 9.2L16 10L12.8 10.8L12 14L11.2 10.8L8 10L11.2 9.2L12 6Z" fill="#ffb3d1" fill-opacity="0.6" />
+      </svg>
+    </div>
+
+    <h1 class="hello-title">hello world</h1>
+    <div class="glow-line"></div>
+
+    <div class="sub-message">
+      <span>✦ interactive</span>
+      <span class="divider-star">✧</span>
+      <span>glassmorphism</span>
+      <span class="divider-star">✧</span>
+      <span>✨ animated</span>
+    </div>
+
+    <!-- button with pulse dot -->
+    <button class="btn-glow" onclick="this.innerText = '✦ welcome ✦'; setTimeout(() => this.innerText = '🌟 say hello', 1200);">
+      <span class="pulse-dot"></span> 🌟 say hello
+    </button>
+
+    <!-- footer / meta info -->
+    <div class="credit">
+      <span>✦ <i>one file</i> ✦</span>
+      <span>✦ <i>beautiful</i> ✦</span>
+      <span>✦ <i>index.html</i> ✦</span>
+    </div>
+
+    <!-- tiny decorative floating "stars" (pure css) -->
+    <div style="position: absolute; top: 10%; right: 8%; font-size: 1.6rem; opacity: 0.08; pointer-events: none; transform: rotate(12deg);">✦ ✧ ✦</div>
+    <div style="position: absolute; bottom: 12%; left: 6%; font-size: 2rem; opacity: 0.06; pointer-events: none; transform: rotate(-6deg);">✧ ✦ ✧</div>
+  </div>
+
+  <!-- tiny script for extra delight (button interaction) -->
+  <script>
+    (function() {
+      // additional playful touch: change sub-message on click (optional)
+      const card = document.querySelector('.hello-card');
+      const sub = document.querySelector('.sub-message');
+      if (card && sub) {
+        card.addEventListener('dblclick', function(e) {
+          const msgs = ['✦ so radiant ✦', '✧ pure magic ✧', '✨ hello again ✨', '🌙 starlight'];
+          const current = sub.innerText;
+          let randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+          // avoid same message
+          while (randomMsg === current && msgs.length > 1) {
+            randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+          }
+          // keep spans structure? we replace innerHTML for simplicity (preserve style)
+          sub.innerHTML = `<span>${randomMsg}</span>`;
+          // reset after 2.5s
+          setTimeout(() => {
+            sub.innerHTML = `<span>✦ interactive</span><span class="divider-star">✧</span><span>glassmorphism</span><span class="divider-star">✧</span><span>✨ animated</span>`;
+          }, 2500);
+        });
+      }
+
+      // log small welcome in console – just for fun
+      console.log('%c✦ hello world ✦', 'font-size: 18px; font-weight: bold; color: #b8aeff;');
+      console.log('%cbeautiful index.html – one file', 'font-size: 12px; color: #a07eff;');
+    })();
+  </script>
+
+</body>
+</html>
